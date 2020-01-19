@@ -1,27 +1,29 @@
 <%= form_with model: @incomes, url: incomes_path, local: true do |form| %>
   <% @incomes.collection.each do |income|%>
     <%= fields_for 'incomes[]', income do |field| %>
-      <div class="field">
-        <%= field.label :category %>
-        <%= field.text_field :category %>
-      </div>
-      
-      <div class="field">
-        <%= field.label :price %>
-        <%= field.text_field :price %>
-      </div>
 
-      <div class="field">
-        <%= field.label :date %>
-        <%= field.number_field :date %>
-      </div>
+      <section class = "row">
+        <div class="field col-sm-3">
+          <%= field.label :category %>
+          <%= field.text_field :category %>
+        </div>
+        
+        <div class="field col-sm-3">
+          <%= field.label :price %>
+          <%= field.text_field :price %>
+        </div>
 
-      <div class="field">
-        <%= field.label :memo %>
-        <%= field.text_field :memo %>
-      </div>
+        <div class="field col-sm-3">
+          <%= field.label :date %>
+          <%= field.number_field :date %>
+        </div>
 
-      </br>
+        <div class="field col-sm-3">
+          <%= field.label :memo %>
+          <%= field.text_field :memo %>
+        </div>
+        </br>
+      </section>
     <% end %>
   <% end %>
 
