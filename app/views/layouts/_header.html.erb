@@ -1,0 +1,16 @@
+<header>
+<nav class="navbar navbar-expand-md  navbar-light bg-light">
+  <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#bs-navi" aria-controls="bs-navi" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+  <div class="collapse navbar-collapse" id="bs-navi">
+      <div id = "logo"> 
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><%= link_to "収入を記録", new_income_path, class:"nav-link" %></li>
+        <li class="nav-item"><%= link_to "支出を記録", new_expense_path, class:"nav-link" %></li>
+        <li class="nav-item"><%= link_to "履歴確認",fork_path, class:"nav-link" %></li>
+    </ul>
+  </div>
+</nav>
+</header>
