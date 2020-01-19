@@ -1,1 +1,39 @@
 <%= form_tag income_path, method: :put do %>
+  <% @incomes.each do |income| %>
+    <%= fields_for "incomes[]", income do |fi| %>
+        <section class = "row">
+            <div class="field col-sm-2">
+            <%= fi.label :カテゴリ %>
+            <%= fi.text_field :category, class:"form" %>
+            </div>
+            
+            <div class="field col-sm-2">
+            <%= fi.label :金額 %>
+            <%= fi.text_field :price %>
+            </div>
+
+            <div class="field col-sm-2">
+            <%= fi.label :日付 %>
+            <%= fi.text_field :date %>
+            </div>
+
+            <div class="field col-sm-2">
+            <%= fi.label :メモ %>
+            <%= fi.text_field :memo %>
+            </div>
+            </br>
+      </section>
+      <br />
+    <% end %>
+  <% end %>
+  <%= submit_tag %>
+<% end %>
+ 
+<%
+=begin
+%>
+<% @incomes%>
+<%= form_tag income_path, method: :put do %>
+<%
+=end
+%>
