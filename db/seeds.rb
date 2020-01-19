@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+5.times do 
+    Income.create([{category: 'money'}, {price: '1000'},{date: 'Wed, 18 Nov 2015'},{memo: '簡単じゃないか'}])
+end

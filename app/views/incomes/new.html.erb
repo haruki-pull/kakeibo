@@ -1,2 +1,34 @@
-<%= form_tag incomes_path, method: :put do %>
-<%= render partial: 'shared/_fill_in_form' ,locals: {data:@income}%>
+<%= form_with model: @incomes, url: incomes_path, local: true do |form| %>
+  <% @incomes.collection.each do |income|%>
+    <%= fields_for 'incomes[]', income do |field| %>
+      <div class="field">
+        <%= field.label :category %>
+        <%= field.text_field :category %>
+      </div>
+      
+      <div class="field">
+        <%= field.label :price %>
+        <%= field.text_field :price %>
+      </div>
+
+      <div class="field">
+        <%= field.label :date %>
+        <%= field.number_field :date %>
+      </div>
+
+      <div class="field">
+        <%= field.label :memo %>
+        <%= field.text_field :memo %>
+      </div>
+
+      </br>
+    <% end %>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Back', incomes_path %>
