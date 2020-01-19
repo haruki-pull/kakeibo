@@ -1,0 +1,10 @@
+
+  <% @items.each do |item| %>
+    <%= fields_for "items[]", item do |fi| %>
+      <%= fi.text_field :name %>
+      <%= fi.text_field :price %>
+      <br />
+    <% end %>
+  <% end %>
+  <%= submit_tag %>
+<% end %>
