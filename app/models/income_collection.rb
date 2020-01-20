@@ -1,6 +1,5 @@
 class IncomeCollection < ApplicationRecord
-end
-class IncomeCollection
+
     include ActiveModel::Conversion
     extend ActiveModel::Naming
     extend ActiveModel::Translation
