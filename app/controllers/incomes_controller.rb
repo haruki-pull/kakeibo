@@ -21,16 +21,14 @@ class IncomesController < ApplicationController
     end
     
     def update
-      @incomes = incomes_params.map do |id, income_param|
+      @incomes = incomes_params.to_unsafe_h.map do |id, income_param|
         income = Income.find(id)
-        if income.update_attributes(income_param)
-          flash[:success] = "編集に成功しました"
-          income
-        else
-          flash[:success] = "編集に失敗しました"
-        end
+        income.update_attributes(income_param)
+        income
       end
-      respond_with(@incomes, location: edit_income_path)
+      flash[:success] = " omedetou"
+      redirect_to incomes_path
+      flash[:success] = " omedetou"
     end
     
     def destroy
@@ -39,6 +37,6 @@ class IncomesController < ApplicationController
     private
     
     def incomes_params
-      params.permit(incomes: [:category, :price, :date, :memo])[:incomes]
+      params.require(:incomes).permit(:id,:category, :price, :date, :memo)
     end
 end
