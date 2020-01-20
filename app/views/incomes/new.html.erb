@@ -2,23 +2,23 @@
   <% @incomes.collection.each do |income|%>
     <%= fields_for 'incomes[]', income do |field| %>
 
-      <section class = "row">
-        <div class="field col-sm-2">
+      <section class = "row incomes_row">
+        <div class="incomes_item col-sm-3">
           <%= field.label :カテゴリ %>
           <%= field.text_field :category, class:"form" %>
         </div>
         
-        <div class="field col-sm-2">
+        <div class="incomes_item col-sm-3">
           <%= field.label :金額 %>
           <%= field.text_field :price %>
         </div>
 
-        <div class="field col-sm-2">
+        <div class="incomes_item col-sm-3">
           <%= field.label :日付 %>
           <%= field.text_field :date %>
         </div>
 
-        <div class="field col-sm-2">
+        <div class="incomes_item col-sm-3">
           <%= field.label :メモ %>
           <%= field.text_field :memo %>
         </div>
