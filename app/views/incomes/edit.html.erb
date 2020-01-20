@@ -5,7 +5,6 @@
             <div class="incomes_item col-sm-3">
             <%= fi.label :カテゴリ %>
             <%= fi.select :category, [["給与", "給与"], ["配当", "配当"], ["おこづかい", "おこづかい"], ["その他", "その他"]] %>
-            
             </div>
             
             <div class="incomes_item col-sm-3">
@@ -29,12 +28,3 @@
   <% end %>
   <%= submit_tag %>
 <% end %>
- 
-<%
-=begin
-%>
-<% @incomes%>
-<%= form_tag income_path, method: :put do %>
-<%
-=end
-%>

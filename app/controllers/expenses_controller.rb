@@ -1,14 +1,14 @@
 class ExpensesController < ApplicationController
     def index
-      @expenses = Income.all
+      @expenses = ExpenseCollection.all
     end
     
     def new
-      @expenses = IncomeCollection.new
+      @expenses = ExpenseCollection.new
     end
 
     def create
-      @expenses = IncomeCollection.new(expenses_params)
+      @expenses = ExpenseCollection.new(expenses_params)
       if @expenses.save
         redirect_to expenses_url
       else
@@ -17,21 +17,23 @@ class ExpensesController < ApplicationController
     end
 
     def edit
-      @expenses = Income.all
+      @expenses = ExpenseCollection.all
     end
     
     def update
       @expenses = expenses_params.to_unsafe_h.map do |id, expense_param|
-        expense = Income.find(id)
+        expense = ExpenseCollection.find(id)
         expense.update_attributes(expense_param)
         expense
       end
-      flash[:success] = " omedetou"
       redirect_to expenses_path
-      flash[:success] = " omedetou"
     end
     
     def destroy
+      @expense = User.find(params[:id])
+      @expense.destroy
+      flash[:success] = "削除に成功しました"
+      redirect_to  root_url
     end
 
     private

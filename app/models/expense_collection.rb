@@ -19,9 +19,9 @@ class ExpenseCollection < ApplicationRecord
             memo: value['memo']
           )
         end
-        else
-            self.collection = EXPENSE_NUM.times.map{ Expense.new }
-        end
+      else
+          self.collection = EXPENSE_NUM.times.map{ Expense.new }
+      end
     end
       
     # レコードが存在するか確認するメソッド
@@ -31,20 +31,18 @@ class ExpenseCollection < ApplicationRecord
 
     # コレクションをDBに保存するメソッド
     def save
-        is_success = true
-        ActiveRecord::Base.transaction do
-            collection.each do |result|
-              # バリデーションを全てかけたいからsave!ではなくsaveを使用
-              is_success = false unless result.save
-            end
-            # バリデーションエラーがあった時は例外を発生させてロールバックさせる
-            raise ActiveRecord::RecordInvalid unless is_success
+      is_success = true
+      ActiveRecord::Base.transaction do
+        collection.each do |result|
+          # バリデーションを全てかけたいからsave!ではなくsaveを使用
+          is_success = false unless result.save
         end
-          rescue
-            p 'エラー'
-          ensure
-            return is_success
-        end
-      
+        # バリデーションエラーがあった時は例外を発生させてロールバックさせる
+        raise ActiveRecord::RecordInvalid unless is_success
       end
+      rescue
+        p 'エラー'
+      ensure
+      return is_success
+    end  
 end

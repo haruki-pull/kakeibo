@@ -46,5 +46,4 @@ class IncomeCollection < ApplicationRecord
       ensure
         return is_success
     end
-  
   end

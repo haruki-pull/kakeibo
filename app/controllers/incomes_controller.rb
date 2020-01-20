@@ -32,6 +32,19 @@ class IncomesController < ApplicationController
     end
     
     def destroy
+      @income = Income.find(params[:id])
+      @income.destroy
+      flash[:success] = "削除に成功しました"
+      redirect_to  root_url
+    end
+
+    def destroy_all
+      checked_data = params[:deletes].keys # ここでcheckされたデータを受け取っています。
+      if Income.destroy(checked_data)
+        redirect_to root_path
+      else
+        render action: 'index'
+      end
     end
 
     private

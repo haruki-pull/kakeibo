@@ -1,0 +1,11 @@
+<%= pie_chart Expense.group(:category).count %>
+<% @expenses.each do |expense| %>
+    <section class = "row expenses_row">
+        <div class = "col-sm-3 ,expenses_item">カテゴリ：<%= expense.category%></div>
+        <div class = "col-sm-3 expenses_item">金額：<%= expense.price%></div>
+        <div class = "col-sm-3 expenses_item">日付：<%= expense.date%></div>
+        <div class = "col-sm-3 expenses_item">メモ：<%= expense.memo%></div>
+        <%= link_to '削除', "/expense/#{@expenses.id}", method: :delete %>
+    </section>
+<% end %>
+
