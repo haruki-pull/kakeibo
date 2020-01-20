@@ -15,7 +15,24 @@
  @import "font-awesome";
  @import "tempusdominus-bootstrap-4.css";
 
-// incomes/new
-.form{
-    padding-right: 5rem;
+ @mixin form_row{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #5d627b;
+    background: white;
+    border-top: solid 5px #5d627b;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+ }
+ @mixin form_item{
+    margin: 0; 
+    padding: 0;
+ }
+//incomes#edit & new
+
+.incomes_row{
+    @include form_row;
+    .incomes_item{
+    @include form_item;
+    }
 }
+

@@ -1,23 +1,23 @@
 <%= form_tag income_path, method: :put do %>
   <% @incomes.each do |income| %>
     <%= fields_for "incomes[]", income do |fi| %>
-        <section class = "row">
-            <div class="field col-sm-2">
+        <section class = "row incomes_row">
+            <div class="incomes_item col-sm-3">
             <%= fi.label :カテゴリ %>
             <%= fi.text_field :category, class:"form" %>
             </div>
             
-            <div class="field col-sm-2">
+            <div class="incomes_item col-sm-3">
             <%= fi.label :金額 %>
             <%= fi.text_field :price %>
             </div>
 
-            <div class="field col-sm-2">
+            <div class="incomes_item col-sm-3">
             <%= fi.label :日付 %>
             <%= fi.text_field :date %>
             </div>
 
-            <div class="field col-sm-2">
+            <div class="incomes_item col-sm-3">
             <%= fi.label :メモ %>
             <%= fi.text_field :memo %>
             </div>
