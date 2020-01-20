@@ -1,3 +1,4 @@
+<%= pie_chart Income.group(:category).count %>
 <% @incomes.each do |income| %>
     <section class = "row incomes_row">
         <div class = "col-sm-3 ,incomes_item">カテゴリ：<%= income.category%></div>
@@ -6,3 +7,4 @@
         <div class = "col-sm-3 incomes_item">メモ：<%= income.memo%></div>
     </section>
 <% end %>
+

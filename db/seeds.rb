@@ -6,6 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-5.times do 
-    Income.create([{category: 'money'}, {price: '1000'},{date: 'Wed, 18 Nov 2015'},{memo: '簡単じゃないか'}])
+15.times do
+    Income.create(
+        category: "給与",
+        price: Faker::Number.between(from: 1, to: 10000),
+        date: Faker::Date.in_date_period,
+        memo: Faker::Job.field
+     )
 end

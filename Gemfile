@@ -13,16 +13,14 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'chartkick', '~> 3.3', '>= 3.3.1'
 
-gem "bootstrap4-datetime-picker-rails"
-gem 'momentjs-rails'
-gem "font-awesome-rails"
-gem 'better_errors', '~> 2.5', '>= 2.5.1'
-gem 'binding_of_caller', '~> 0.8.0'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'faker', '~> 2.10', '>= 2.10.1'
 end
 
 group :development do
@@ -35,11 +33,11 @@ group :development do
 end
 
 group :test do
-  # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
-  # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  gem 'better_errors', '~> 2.5', '>= 2.5.1'
+  gem 'binding_of_caller', '~> 0.8.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

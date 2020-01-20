@@ -4,7 +4,8 @@
         <section class = "row incomes_row">
             <div class="incomes_item col-sm-3">
             <%= fi.label :カテゴリ %>
-            <%= fi.text_field :category, class:"form" %>
+            <%= fi.select :category, [["給与", "給与"], ["配当", "配当"], ["おこづかい", "おこづかい"], ["その他", "その他"]] %>
+            
             </div>
             
             <div class="incomes_item col-sm-3">
@@ -14,7 +15,7 @@
 
             <div class="incomes_item col-sm-3">
             <%= fi.label :日付 %>
-            <%= fi.text_field :date %>
+            <%= fi.date_select :date, {include_blank: true, use_month_numbers: true} %>
             </div>
 
             <div class="incomes_item col-sm-3">

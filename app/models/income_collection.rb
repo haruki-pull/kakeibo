@@ -6,7 +6,7 @@ class IncomeCollection
     extend ActiveModel::Translation
     include ActiveModel::AttributeMethods
     include ActiveModel::Validations
-    INCOME_NUM = 5  # 同時にユーザーを作成する数
+    INCOME_NUM = 1  # 同時にユーザーを作成する数
     attr_accessor :collection  # ここに作成したユーザーモデルが格納される
   
     # 初期化メソッド

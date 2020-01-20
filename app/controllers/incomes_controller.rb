@@ -39,7 +39,7 @@ class IncomesController < ApplicationController
     def incomes_params
       params.require(:incomes) do |income|
          ActionController::Parameters.new(income.to_hash).permit(:category, :price, :date, :memo)
-       end
+      end
     end
 
 end
