@@ -17,7 +17,12 @@ class IncomesController < ApplicationController
     end
 
     def edit
-      @incomes = Income.all
+      @incomes = incomes_params.to_unsafe_h.map do |id, income_param|
+        income = Income.find(id)
+        income.update_attributes(income_param)
+        income
+      end
+      # @incomes = Income.find(params[:id])
     end
     
     def update
