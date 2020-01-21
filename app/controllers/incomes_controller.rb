@@ -26,9 +26,7 @@ class IncomesController < ApplicationController
         income.update_attributes(income_param)
         income
       end
-      flash[:success] = " omedetou"
       redirect_to incomes_path
-      flash[:success] = " omedetou"
     end
     
     def destroy
