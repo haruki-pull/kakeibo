@@ -1,8 +1,0 @@
-  <% data.each do |data| %>
-    <%= fields_for "data[]", data do |fi| %>
-      <%= fi.text_field :name %>
-      <%= fi.text_field :price %>
-      <br />
-    <% end %>
-  <% end %>
-  <%= submit_tag %>
