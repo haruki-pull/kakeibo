@@ -1,8 +1,12 @@
 class ExpensesController < ApplicationController
   before_action :set_expense, only: [:edit, :show, :update, :destroy]
-  # before_action :already_logged_in, only: [:edit, :show, :update, :destroy]
+
   def index
-    @expenses = Expense.all
+    @expenses = Income.all
+    if params[:category].present?
+      @expenses = @expenses.get_by_category params[:category]
+    end
+  
   end
 
   def show
@@ -10,7 +14,7 @@ class ExpensesController < ApplicationController
   end
 
   def new
-    @expenses = Expense.new
+    @expense =Expense.new
   end
 
   def edit
@@ -44,10 +48,6 @@ class ExpensesController < ApplicationController
   end
 
   private
-    def set_expense
-      @expense = Expense.find(params[:id])
-    end
-
     def expense_params
       params.require(:expense).permit(:category, :price, :date, :memo)
     end

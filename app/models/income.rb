@@ -5,11 +5,9 @@ class Income < ApplicationRecord
     validates :date, presence:true
     validates :memo, length: { maximum: 40 }
     
-    def self.search(search)
-        if search
-          Income.where(['content LIKE ?', "%#{search}%"])
-        else
-          Income.all
-        end
-      end
+    # カテゴリによる絞り込み
+    scope :get_by_category, ->(category) {
+        where(category: category)
+    }
+
 end

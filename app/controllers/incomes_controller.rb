@@ -1,8 +1,11 @@
 class IncomesController < ApplicationController
     before_action :set_income, only: [:edit, :show, :update, :destroy]
-    # before_action :already_logged_in, only: [:edit, :show, :update, :destroy]
+    
     def index
       @incomes = Income.all
+      if params[:category].present?
+        @incomes = @incomes.get_by_category params[:category]
+      end
     end
   
     def show
@@ -20,10 +23,10 @@ class IncomesController < ApplicationController
     def create
       @income = Income.new(income_params)
       if @income.save
-        flash[:success] = "登録に成功しました"
-        redirect_to root_url
+        flash.now[:success] = "登録に成功しました"
+        redirect_to incomes_path
       else
-        flash[:danger] = '入力に失敗しました。全ての項目を記入してください'
+        flash.now[:danger] = '入力に失敗しました。全ての項目を記入してください'
         render 'new'
 
       end

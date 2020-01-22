@@ -1,4 +1,14 @@
-<%= pie_chart Expense.group(:category).count %>
+<div>
+<%= form_tag(root_path, method: "get") do %>
+<%= label_tag :name, "カテゴリを選択してください" %>
+<%= select_tag :category, options_for_select([
+            ["家賃", "家賃"], ["水道光熱費", "水道光熱費"], ["食費", "食費"], ["交際費", "交際費"],
+            ["娯楽", "娯楽"],["衣類", "衣類"],["通信費", "通信費"],["交通費", "交通費"],["保険料", "保険料"],["その他", "その他"]
+          ] ), include_blank: true %>
+<%= submit_tag "検索" %>
+<% end %>
+</div>
+
 <% @expenses.each do |expense| %>
     <section class = "row expenses_row">
         <div class = "col-sm-10">
@@ -14,6 +24,3 @@
         </div>
     </section>
 <% end %>
-
-
-

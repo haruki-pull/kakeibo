@@ -1,8 +1,13 @@
 class StaticPagesController < ApplicationController
   
   def home
-    @incomes = Income.search(params[:search])
-    
+    @incomes = Income.all
+    if params[:category].present?
+      @incomes = @incomes.get_by_category params[:category]
+      end
+      if params[:gender].present?
+      @users = @users.get_by_gender params[:gender]
+      end
     # today = Date.today
     # this_year = today.year
     # this_month = today.month

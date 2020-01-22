@@ -26,6 +26,46 @@
     margin: 0; 
     padding: 0;
  }
+//home
+ .demo {
+   width: 500px;
+   margin: 0 auto;
+   padding: 10px 0;
+   font-family: sans-serif;
+   font-size: 20px;
+   color:#3cb3e4;
+ }
+ .home_text{
+   text-align: center;
+   margin:  0;                 
+   line-height: 2;             
+   padding-left: 40px;         
+ }
+ .heading {
+   margin: 10px 0
+ }
+ .demo9 .heading {
+   border-top: 3px solid #3cb3e4;
+   border-bottom: 3px solid #3cb3e4;
+   padding: 5px 20px;
+   position: relative;
+   width: 300px;
+   text-align: center;
+   margin: 30px auto;
+   color: #3cb3e4;
+   font-weight: bold;
+ }
+ .demo9 .heading:before {
+   content: "";
+   border-left: 3px solid #3cb3e4;
+   border-right: 3px solid #3cb3e4;
+   display: block;
+   position: absolute;
+   width: calc(100% - 20px);
+   height: 58px;
+   top: -8px;
+   left: 8px;
+ }
 //incomes#edit & new
 
 .incomes_row{
@@ -41,6 +81,7 @@
    @include form_item;
    }
 }
+
 
 
 

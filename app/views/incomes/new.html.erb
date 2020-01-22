@@ -1,7 +1,7 @@
 <% if @income.errors.any? %>
   <div class="alert alert-danger">入力内容に不備が存在します。全ての項目を記入してください</div>
 <% else %>
-  <div class="alert alert-danger">入力内容に不備が存在します。全ての項目を記入してください</div>
+  <div class="alert alert-info">項目を記入してください</div>
 <% end %>
   <%= form_for(@income) do |f| %>
       <section class = "row incomes_row">
