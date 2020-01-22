@@ -1,61 +1,56 @@
 class IncomesController < ApplicationController
+    before_action :set_income, only: [:edit, :show, :update, :destroy]
+    # before_action :already_logged_in, only: [:edit, :show, :update, :destroy]
     def index
       @incomes = Income.all
     end
-    
-    def new
-      @incomes = IncomeCollection.new
-    end
-
-    def create
-      @incomes = IncomeCollection.new(incomes_params)
-      if @incomes.save
-        redirect_to incomes_url
-      else
-        render :new
-      end
-    end
-
-    def edit
-      @incomes = incomes_params.to_unsafe_h.map do |id, income_param|
-        income = Income.find(id)
-        income.update_attributes(income_param)
-        income
-      end
-      # @incomes = Income.find(params[:id])
-    end
-    
-    def update
-      @incomes = incomes_params.to_unsafe_h.map do |id, income_param|
-        income = Income.find(id)
-        income.update_attributes(income_param)
-        income
-      end
-      redirect_to incomes_path
-    end
-    
-    def destroy
+  
+    def show
       @income = Income.find(params[:id])
+    end
+  
+    def new
+      @income = Income.new
+    end
+  
+    def edit
+      @income = Income.find(params[:id])
+    end
+  
+    def create
+      @income = Income.new(income_params)
+      if @income.save
+        flash[:success] = "登録に成功しました"
+        redirect_to root_url
+      else
+        flash[:danger] = '入力に失敗しました。全ての項目を記入してください'
+        render 'new'
+
+      end
+    end
+  
+    def update
+      if @income.update(income_params)
+        flash[:success] = "編集に成功しました"
+        redirect_to action: 'index'
+      else
+        render 'ndex'
+      end
+  
+    end
+  
+    def destroy
       @income.destroy
       flash[:success] = "削除に成功しました"
       redirect_to  root_url
     end
-
-    def destroy_all
-      checked_data = params[:deletes].keys # ここでcheckされたデータを受け取っています。
-      if Income.destroy(checked_data)
-        redirect_to root_path
-      else
-        render action: 'index'
-      end
-    end
-
+  
     private
-    
-    def incomes_params
-      params.require(:incomes) do |income|
-         ActionController::Parameters.new(income.to_hash).permit(:category, :price, :date, :memo)
+      def set_income
+        @income = Income.find(params[:id])
       end
-    end
-
+  
+      def income_params
+        params.require(:income).permit(:category, :price, :date, :memo)
+      end
 end

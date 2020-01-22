@@ -1,34 +1,37 @@
-<%= form_tag expense_path, method: :put do %>
-  <% @expenses.each do |expense| %>
-    <%= fields_for "expenses[]", expense do |fi| %>
-        <section class = "row expenses_row">
-            <div class="expenses_item col-sm-3">
-            <%= fi.label :カテゴリ %>
-            <%= fi.select :category, [
-              ["家賃", "家賃"], ["水道光熱費", "水道光熱費"], ["食費", "食費"], ["交際費", "交際費"],
-              ["娯楽", "娯楽"],["衣類", "衣類"],["通信費", "通信費"],["交通費", "交通費"],["保険料", "保険料"],["その他", "その他"]
-              ] %>
-            
-            </div>
-            
-            <div class="expenses_item col-sm-3">
-            <%= fi.label :金額 %>
-            <%= fi.text_field :price %>
-            </div>
+<%= form_for(@expense) do |fi|%>
+  <section class = "row expenses_row">
+    <div class = "col-sm-12">
+      <div class = "row ">
+        <div class="expenses_item col-sm-3">
+          <%= fi.label :カテゴリ %>
+          <%= fi.select :category, [
+          ["家賃", "家賃"], ["水道光熱費", "水道光熱費"], ["食費", "食費"], ["交際費", "交際費"],
+          ["娯楽", "娯楽"],["衣類", "衣類"],["通信費", "通信費"],["交通費", "交通費"],["保険料", "保険料"],["その他", "その他"]
+          ] %>
+        </div>
+        
+        <div class="expenses_item col-sm-3">
+          <%= fi.label :金額 %>
+          <%= fi.text_field :price %>
+        </div>
+              
+        <div class="expenses_item col-sm-3">
+          <%= fi.label :日付 %>
+          <%= fi.date_select :date, {include_blank: true, use_month_numbers: true} %>
+        </div>
 
-            <div class="expenses_item col-sm-3">
-            <%= fi.label :日付 %>
-            <%= fi.date_select :date, {include_blank: true, use_month_numbers: true} %>
-            </div>
-
-            <div class="expenses_item col-sm-3">
-            <%= fi.label :メモ %>
-            <%= fi.text_field :memo %>
-            </div>
-            </br>
-      </section>
-      <br />
-    <% end %>
-  <% end %>
-  <%= submit_tag %>
+        <div class="expenses_item col-sm-3">
+          <%= fi.label :メモ %>
+          <%= fi.text_field :memo %>
+        </div>
+      </div>
+    </div>
+    <div class = "col-sm-12">
+      <div class = "row ">
+        <div class = "expenses_item col-sm-6 text-center"><%= link_to '編集', income_path, method: :patch %></div>
+        <div class = "expenses_item col-sm-6 text-center"><%= link_to '削除', income_path, method: :delete %></div>
+      </div>
+    </div>
+    </div>
+  </section>
 <% end %>

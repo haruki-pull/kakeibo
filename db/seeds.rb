@@ -14,3 +14,12 @@
         memo: Faker::Job.field
      )
 end
+
+15.times do
+    Expense.create(
+        category: "食費",
+        price: Faker::Number.between(from: 1, to: 10000),
+        date: Faker::Date.in_date_period,
+        memo: Faker::Job.field
+     )
+end

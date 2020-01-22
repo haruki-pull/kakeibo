@@ -35,7 +35,7 @@
     }
 }
 
-.expenses_item{
+.expenses_row{
    @include form_row;
    .expenses_item{
    @include form_item;

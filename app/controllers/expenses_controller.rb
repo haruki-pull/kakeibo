@@ -1,47 +1,54 @@
 class ExpensesController < ApplicationController
-    def index
-      @expenses = ExpenseCollection.all
+  before_action :set_expense, only: [:edit, :show, :update, :destroy]
+  # before_action :already_logged_in, only: [:edit, :show, :update, :destroy]
+  def index
+    @expenses = Expense.all
+  end
+
+  def show
+    @expense = Expense.find(params[:id])
+  end
+
+  def new
+    @expenses = Expense.new
+  end
+
+  def edit
+    @expense = Expense.find(params[:id])
+  end
+
+  def create
+    @expense = Expense.new(expense_params)
+    if @expense.save
+      flash[:success] = "ユーザー登録に成功しました"
+      redirect_to @expense
+    else
+      render 'new'
     end
-    
-    def new
-      @expenses = ExpenseCollection.new
+  end
+
+  def update
+    if @expense.update(expense_params)
+      flash[:success] = "編集に成功しました"
+      redirect_to action: 'index'
+    else
+      render 'show'
     end
 
-    def create
-      @expenses = ExpenseCollection.new(expenses_params)
-      if @expenses.save
-        redirect_to expenses_url
-      else
-        render :new
-      end
+  end
+
+  def destroy
+    @expense.destroy
+    flash[:success] = "削除に成功しました"
+    redirect_to  root_url
+  end
+
+  private
+    def set_expense
+      @expense = Expense.find(params[:id])
     end
 
-    def edit
-      @expenses = ExpenseCollection.all
+    def expense_params
+      params.require(:expense).permit(:category, :price, :date, :memo)
     end
-    
-    def update
-      @expenses = expenses_params.to_unsafe_h.map do |id, expense_param|
-        expense = ExpenseCollection.find(id)
-        expense.update_attributes(expense_param)
-        expense
-      end
-      redirect_to expenses_path
-    end
-    
-    def destroy
-      @expense = User.find(params[:id])
-      @expense.destroy
-      flash[:success] = "削除に成功しました"
-      redirect_to  root_url
-    end
-
-    private
-    
-    def expenses_params
-      params.require(:expenses) do |expense|
-         ActionController::Parameters.new(expense.to_hash).permit(:category, :price, :date, :memo)
-      end
-    end
-
-end
+  end
