@@ -1,24 +1,30 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+###Ruby/Ruby on Railsのバージョン確認をお願いします
+当アプリはRuby on Railsで開発しました。
 
-Things you may want to cover:
+Rails 5.2.4.1
+ruby 2.6.3p62 (2019-04-16 revision 67580) [x86_64-linux]
 
-* Ruby version
+上のバージョンに合わせてください
 
-* System dependencies
+###ローカルリポジトリにcloneしてください
+git clone git@github.com:haruki-pull/kakeibo.git
 
-* Configuration
+###gemのインストール
+まずはBundlerのインストールをお願いします
+インストールがまだの場合
+`gem install bundler`コマンドを実行してください
 
-* Database creation
+リポジトリのclone後、
+`bundle install`コマンドでgemをインストールしてください
 
-* Database initialization
+###データベースの作成
 
-* How to run the test suite
+rails db:create  #データベースの作成
+rails db:migrate #データベースのマイグレーション
+rails db:seed    #データベースにデータの投入
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+###ローカルサーバーの起動
+上までの手順の後、
+`rails s`コマンドでローカルサーバーを起動してください。
