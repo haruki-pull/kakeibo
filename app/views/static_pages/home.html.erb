@@ -5,7 +5,7 @@
 <div class = "home_text ">これは家計簿のアプリです。<br>ページ上部から項目を選んで記入してください</div>
 <h2 class = "home_title">今月の収支</h2>
 <section class = "home_section">
-    <h3>支出：<%= @this_month_incomes.all.sum(:price)%>円</h3>
+    <h3>収入：<%= @this_month_incomes.all.sum(:price)%>円</h3>
     <%= @this_month_incomes&.each do |income|%>
       <section class = "row incomes_row">
           <div class = "col-sm-10">
