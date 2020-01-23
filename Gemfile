@@ -13,7 +13,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'chartkick', '~> 3.3', '>= 3.3.1'
-gem 'faker', '~> 2.10', '>= 2.10.1'
+gem 'faker'
 
 
 group :development, :test do
