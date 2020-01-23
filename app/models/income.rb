@@ -9,5 +9,6 @@ class Income < ApplicationRecord
     scope :get_by_category, ->(category) {
         where(category: category)
     }
+    
 
 end
