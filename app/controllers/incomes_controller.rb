@@ -23,8 +23,8 @@ class IncomesController < ApplicationController
     def create
       @income = Income.new(income_params)
       if @income.save
-        flash.now[:success] = "登録に成功しました"
-        redirect_to incomes_path
+        # redirect_to 'index', success: 'succress create task'
+        redirect_to action: index
       else
         flash.now[:danger] = '入力に失敗しました。全ての項目を記入してください'
         render 'new'
@@ -33,11 +33,12 @@ class IncomesController < ApplicationController
     end
   
     def update
+        @income = Income.find(params[:id])
       if @income.update(income_params)
         flash[:success] = "編集に成功しました"
         redirect_to action: 'index'
       else
-        render 'ndex'
+        render 'edit'
       end
   
     end

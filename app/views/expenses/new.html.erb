@@ -1,8 +1,3 @@
-<% if @expense.errors.any? %>
-  <div class="alert alert-danger">入力内容に不備が存在します。全ての項目を記入してください</div>
-<% else %>
-  <div class="alert alert-info">項目を記入してください</div>
-<% end %>
   <%= form_for(@expense) do |f| %>
       <section class = "row expenses_row">
         <div class="expenses_item col-sm-3">
@@ -33,3 +28,14 @@
     <%= f.submit %>
   </div>
 <% end %>
+<%
+=begin
+%>
+<% if @expense.errors.any? %>
+  <div class="alert alert-danger">入力内容に不備が存在します。全ての項目を記入してください</div>
+<% else %>
+  <div class="alert alert-info">項目を記入してください</div>
+<% end %>
+<%
+=end
+%>

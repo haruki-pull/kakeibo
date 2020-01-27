@@ -1,5 +1,5 @@
 class ExpensesController < ApplicationController
-  before_action :set_expense, only: [:edit, :show, :update, :destroy]
+  # before_action :set_expense, only: [:edit, :show, :update, :destroy]
 
   def index
     @expenses = Income.all
@@ -24,8 +24,8 @@ class ExpensesController < ApplicationController
   def create
     @expense = Expense.new(expense_params)
     if @expense.save
-      flash[:success] = "ユーザー登録に成功しました"
-      redirect_to @expense
+      flash[:success] = "登録に成功しました"
+      redirect_to 'index'
     else
       render 'new'
     end
@@ -34,9 +34,9 @@ class ExpensesController < ApplicationController
   def update
     if @expense.update(expense_params)
       flash[:success] = "編集に成功しました"
-      redirect_to action: 'index'
+      redirect_to expenses_path
     else
-      render 'show'
+      render 'edit'
     end
 
   end
@@ -48,6 +48,11 @@ class ExpensesController < ApplicationController
   end
 
   private
+
+    def set_expense
+      @expense = Expense.find(params[:id])
+    end
+  
     def expense_params
       params.require(:expense).permit(:category, :price, :date, :memo)
     end

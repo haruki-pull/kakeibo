@@ -27,8 +27,8 @@
     </div>
     <div class = "col-sm-12">
       <div class = "row ">
-        <div class = "incomes_item col-sm-6 text-center"><%= link_to '編集', income_path, method: :patch %></div>
-        <div class = "incomes_item col-sm-6 text-center"><%= link_to '削除', income_path, method: :delete %></div>
+         <%= fi.submit '更新',class:"incomes_item col-sm-6" %>
+        <div class = "incomes_item col-sm-6 text-center"><%= link_to '削除', income_path(@income), method: :delete %></div>
       </div>
     </div>
     </div>
